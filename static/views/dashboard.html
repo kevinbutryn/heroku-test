@@ -1,0 +1,408 @@
+<html>
+<style>
+    .table.no-cellpadding td{
+    padding: 0;
+    }
+</style>
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand text-white">COPD</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#/homePage">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Add
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#/addAppointment">Appointment</a>
+                <a class="dropdown-item" href="#/addExercise">Exercise</a>
+                <a class="dropdown-item" href="#/addFood">Food</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown active">
+              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                View
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                <a class="dropdown-item" href="#/appointments">Appointment</a>
+                <a class="dropdown-item" href="#/viewExercise">Exercise</a>
+                <a class="dropdown-item" href="#/viewFood">Food</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#/dashboard">Health Insights</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#/viewCalendar">Calendar</a>
+            </li>
+          </ul>
+        </div>
+                        <button type="submit" class="btn" ng-click="logout()">Logout</button>
+      </nav>
+	<br><br><br>
+
+  <main role="main">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-4"></div>
+            <div class="h4 col-md-6">
+                <form class="form-inline align-center">
+                    <label for="dataRange">Health Insights of &nbsp;&nbsp;&nbsp;</label>
+                    <select id="dataRange" class="form-control" style="width:auto;" ng-model="timeSelector" ng-change="callAgain()">
+                        <option value="7">Last 7 Days</option>
+                        <option value="30">Last 30 Days</option>
+                        <option value="183">Last 6 Months</option>
+                        <option value="365">Last 12 Months</option>
+                        <option value="alltime">All</option>
+                    </select>
+                </form>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        <div class="row">
+            <!-- Calories Charts -->
+            <div class="col-md-12 mb-2">
+                <div class="card card-hover-shadow p-1">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col"  style="position: relative; height:30vh;">
+                                <canvas id="TotalCalories"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-hover-shadow">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col"  style="position: relative; height:30vh;">
+                                <canvas id="TotalCaloriesBreakFast"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-hover-shadow">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col"  style="position: relative; height:30vh;">
+                                <canvas id="TotalCaloriesLunch"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mt-2">
+                <div class="card card-hover-shadow">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col"  style="position: relative; height:30vh;">
+                                <canvas id="TotalCaloriesDinner"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mt-2">
+                <div class="card card-hover-shadow">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col"  style="position: relative; height:30vh;">
+                                <canvas id="TotalCaloriesSnack"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mt-2">
+                <div class="card card-hover-shadow">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col"  style="position: relative;">
+                                <div class="h6"><strong>Top 5 Highest Caloric Food</strong></div>
+                                <div class="h6">(Beakfast)</div>
+                                <table class="table mt-3">
+                                    <thead>
+                                        <tr>
+                                            <th>Food Name</th>
+                                            <th>Calories</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="item in breakfastData">
+                                            <td>{{item.food_name}}</td>
+                                            <td>{{item.sum}}</td>
+                                        </tr>
+                                        <!-- <tr>
+                                            <td>Item Name 2</td>
+                                            <td>500</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Item Name 3</td>
+                                            <td>500</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Item Name 4</td>
+                                            <td>500</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Item Name 5</td>
+                                            <td>500</td>
+                                        </tr> -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mt-2">
+                <div class="card card-hover-shadow">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col"  style="position: relative;">
+                                <div class="h6"><strong>Top 5 Highest Caloric Food</strong></div>
+                                <div class="h6">(Lunch)</div>
+                                <table class="table mt-3">
+                                    <thead>
+                                        <tr>
+                                            <th>Food Name</th>
+                                            <th>Calories</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr ng-repeat="item in lunchData">
+                                          <td>{{item.food_name}}</td>
+                                          <td>{{item.sum}}</td>
+                                      </tr>
+                                        <!-- <tr>
+                                            <td>Item Name 2</td>
+                                            <td>500</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Item Name 3</td>
+                                            <td>500</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Item Name 4</td>
+                                            <td>500</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Item Name 5</td>
+                                            <td>500</td>
+                                        </tr> -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mt-2">
+                <div class="card card-hover-shadow">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col"  style="position: relative;">
+                                <div class="h6"><strong>Top 5 Highest Caloric Food</strong></div>
+                                <div class="h6">(Dinner)</div>
+                                <table class="table mt-3">
+                                    <thead>
+                                        <tr>
+                                            <th>Food Name</th>
+                                            <th>Calories</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr ng-repeat="item in dinnerData">
+                                          <td>{{item.food_name}}</td>
+                                          <td>{{item.sum}}</td>
+                                      </tr>
+                                        <!-- <tr>
+                                            <td>Item Name 2</td>
+                                            <td>500</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Item Name 3</td>
+                                            <td>500</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Item Name 4</td>
+                                            <td>500</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Item Name 5</td>
+                                            <td>500</td>
+                                        </tr> -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mt-2">
+                <div class="card card-hover-shadow">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col"  style="position: relative;">
+                                <div class="h6"><strong>Top 5 Highest Caloric Food</strong></div>
+                                <div class="h6">(Snack)</div>
+                                <table class="table mt-3">
+                                    <thead>
+                                        <tr>
+                                            <th>Food Name</th>
+                                            <th>Calories</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr ng-repeat="item in snackData">
+                                          <td>{{item.food_name}}</td>
+                                          <td>{{item.sum}}</td>
+                                      </tr>
+                                        <!-- <tr>
+                                            <td>Item Name 2</td>
+                                            <td>500</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Item Name 3</td>
+                                            <td>500</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Item Name 4</td>
+                                            <td>500</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Item Name 5</td>
+                                            <td>500</td>
+                                        </tr> -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Fitness Charts -->
+            <div class="col-md-12 mb-2">
+                <div class="card card-hover-shadow p-1 mt-2">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col"  style="position: relative; height:30vh;">
+                                <canvas id="TotalCaloriesBurned"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-hover-shadow">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col"  style="position: relative; height:30vh;">
+                                <canvas id="TotalDurationChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-hover-shadow">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col"  style="position: relative; height:30vh;">
+                                <canvas id="EnergyBalanceChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-hover-shadow mt-2 mb-3">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col"  style="position: relative;">
+                                <div class="row align-items-center">
+                                    <div class="col"  style="position: relative;">
+                                        <div class="h6"><strong>Top 5 Exercise by Calories</strong></div>
+                                        <table class="table mt-3">
+                                            <thead>
+                                                <tr>
+                                                    <th>Exercise Name</th>
+                                                    <th>Calories</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr ng-repeat="item in calorieburnedtop5">
+                                                  <td>{{item.exercise_name}}</td>
+                                                  <td>{{item.sum}}</td>
+                                              </tr>
+                                                <!-- <tr>
+                                                    <td>Item Name 2</td>
+                                                    <td>500</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Item Name 3</td>
+                                                    <td>500</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Item Name 4</td>
+                                                    <td>500</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Item Name 5</td>
+                                                    <td>500</td>
+                                                </tr> -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-hover-shadow mt-2 mb-3">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col"  style="position: relative;">
+                                <div class="row align-items-center">
+                                    <div class="col"  style="position: relative;">
+                                        <div class="h6"><strong>Top 5 Exercise by duration</strong></div>
+                                        <table class="table mt-3">
+                                            <thead>
+                                                <tr>
+                                                    <th>Exercise Name</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr ng-repeat="item in durationtop5">
+                                                  <td>{{item.exercise_name}}</td>
+                                                  <td>{{item.sum}}</td>
+                                              </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </main>
+</body>
+</html>

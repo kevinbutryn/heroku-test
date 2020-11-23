@@ -1,0 +1,57 @@
+<html>
+<body>
+
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand text-white">COPD</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#/homePage">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Add
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#/addAppointment">Appointment</a>
+            <a class="dropdown-item" href="#/addExercise">Exercise</a>
+            <a class="dropdown-item" href="#/addFood">Food</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown active">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            View
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+            <a class="dropdown-item" href="#/appointments">Appointment</a>
+            <a class="dropdown-item" href="#/viewExercise">Exercise</a>
+            <a class="dropdown-item" href="#/viewFood">Food</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#/dashboard">Health Insights</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#/viewCalendar">Calendar</a>
+        </li>
+      </ul>
+    </div>
+					<button type="submit" class="btn" ng-click="logout()">Logout</button>
+  </nav>
+  <br><br><br>
+  <main role="main">
+		<div class="container">
+      <div id="calendar"></div>
+    </div>
+  </main>
+  <style>
+  .fc-month-view span.fc-title{
+         white-space: normal;
+  }
+  </style>
+</body>
+</html>

@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html data-ng-app="COPDDashboardApp">
+  <head>
+    <meta charset="utf-8">
+    <title>COPD Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script> -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     <link rel="stylesheet" href="static/css/custom.css">
+     <link rel="stylesheet" href="http://cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
+  <!-- add css links here -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+  </head>
+  <body>
+
+  <script data-require="jquery@*" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+
+   <script src="static/js/angular.js"></script>
+    <script src="static/js/angular-route.min.js"></script>
+   <script src="static/js/angular-animate.min.js"></script>
+   <script src="static/js/angular-touch.min.js"></script>
+   <script src="static/js/angular-cookies.js"></script>
+ 
+  <!-- <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+  <script type="text/javascript" src="cordova.js"></script> -->
+
+  <!--Script files for jQuery maskMoney (Don't delete it) -->
+  <script src="static/js/app.js"></script>
+  <script src ="static/js/router.js"></script>
+  <script src ="static/controllers/homePageController.js"></script>
+  <script src ="static/controllers/loginPageController.js"></script>
+  <script src ="static/controllers/appointmentsPageController.js"></script>
+  <script src ="static/controllers/addFoodController.js"></script>
+  <script src ="static/controllers/addExerciseController.js"></script>
+  <script src ="static/controllers/addAppointmentController.js"></script>
+  <script src = "static/controllers/viewFoodPageController.js"></script>
+  <script src = "static/controllers/viewExercisePageController.js"></script>
+  <script src = "static/controllers/viewCalendarController.js"></script>
+  <script src = "static/controllers/dashboardController.js"></script>
+
+
+  <script src="https://kit.fontawesome.com/362565ebb5.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  
+  <script data-require="moment.js@*" data-semver="2.14.1" src="https://npmcdn.com/moment@2.14.1"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.3.0/fullcalendar.min.js"></script>
+  <!-- CSS Styles -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.3.0/fullcalendar.min.css" />
+   
+  
+  <script src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+  <script src="static/js/angular-datatables.min.js"></script> 
+
+  <div ng-view></div>
+
+  </body>
+</html>

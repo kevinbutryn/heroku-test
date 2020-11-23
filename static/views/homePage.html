@@ -1,0 +1,150 @@
+<html>
+
+<body>
+
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand text-white">COPD</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#/homePage">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Add
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#/addAppointment">Appointment</a>
+            <a class="dropdown-item" href="#/addExercise">Exercise</a>
+            <a class="dropdown-item" href="#/addFood">Food</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            View
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+            <a class="dropdown-item" href="#/appointments">Appointment</a>
+            <a class="dropdown-item" href="#/viewExercise">Exercise</a>
+            <a class="dropdown-item" href="#/viewFood">Food</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#/dashboard">Health Insights</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#/viewCalendar">Calendar</a>
+        </li>
+      </ul>
+    </div>
+					<button type="submit" class="btn" ng-click="logout()">Logout</button>
+  </nav>
+	<br><br><br>
+
+  <main role="main">
+
+		<div class="container">
+      <div class="card border-info mb-5">
+        <div class="row no-gutters">
+            <div class="col-9 p-3">
+                <p class="h3 text-capitalize text-dark p-2">Upcoming Appointments</p>
+                <div class="alert alert-info p-2" role="alert" ng-repeat = "entry in appointmentsData">
+                    {{entry.app_type}} with {{entry.name_doctor}} on {{entry.date_time}} at {{entry.location_app}}
+
+                </div>
+                <!-- <div class="alert alert-info p-2" role="alert">
+                  x-ray with labcorp on 2020-08-15 at 01:02:05
+                </div> -->
+            </div>
+            <div class="col-3 bg-info text-white d-flex">
+                <h1 class="mx-auto align-self-center">
+                    <i class="fa fa-4x fa-calendar-check"></i>
+                </h1>
+            </div>
+        </div>
+      </div>
+      <div class="card border-warning mb-5">
+        <div class="row no-gutters">
+            <div class="col-3 bg-warning text-white d-flex">
+              <h1 class="mx-auto align-self-center">
+                <i class="fa fa-4x fa-hamburger"></i>
+              </h1>
+            </div>
+            <div class="col-9 p-3">
+              <canvas id="TotalCalories" style="height:150%"></canvas>
+            </div>
+        </div>
+      </div>
+      <div class="card border-danger mb-5">
+        <div class="row no-gutters">
+            <div class="col-9 p-3">
+              <canvas id="TotalCaloriesBurned" style="height:150%"></canvas>
+            </div>
+            <div class="col-3 bg-danger text-white d-flex">
+              <h1 class="mx-auto align-self-center">
+                <i class="fa fa-4x fa-running"></i>
+              </h1>
+            </div>
+
+        </div>
+      </div>
+      <div class="card border-primary mb-5">
+        <div class="row no-gutters">
+            <div class="col-3 bg-primary text-white d-flex">
+              <h1 class="mx-auto align-self-center">
+                <i class="fa fa-4x fa-file-alt"></i>
+              </h1>
+            </div>
+            <div class="col-9 p-3">
+              <section class="pb-5">
+                <div class="container">
+                  <div class="row">
+                      <div class="col-6">
+                          <h3 class="mb-3">COPD Articles</h3>
+                      </div>
+                      <div class="col-6 text-right">
+                          <a class="btn btn-primary mb-3 mr-1 carousel-control left" data-target="#carouselExampleFade" role="button" data-slide="prev">
+                              <i class="fa fa-arrow-left text-light"></i>
+                          </a>
+                          <a class="btn btn-primary mb-3 carousel-control" data-target="#carouselExampleFade" role="button" data-slide="next">
+                              <i class="fa fa-arrow-right text-light"></i>
+                          </a>
+                      </div>
+                      <div class="col-12">
+                        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+                          <div class="carousel-inner">
+                            <div class="carousel-item" ng-repeat = "rowItem in chunkedData" ng-class="{'active': rowItem == chunkedData[0]}">
+                              <div class="row">
+                                <div class="col" ng-repeat = "item in rowItem">
+                                  <div class="card">
+                                    <div class="card-body">
+                                      <h5 class="card-title">{{item.article_name}}</h5>
+                                      <p class="card-text"><span class="badge badge-pill badge-info">{{item.tags}}</span></p>
+                                      <a href={{item.url_link}} target="_blank" class="btn btn-primary btn-sm">Visit Page</a>
+                                    </div>
+                                  </div>
+                                </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+              </section>
+            </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- <canvas id="TotalCaloriesChart"></canvas> -->
+
+  </main>
+
+
+
+
+</body>
+</html>

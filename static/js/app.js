@@ -1,0 +1,15 @@
+var app = angular.module('COPDDashboardApp',[
+'ngRoute',
+'ngCookies',
+'homePageController.module',
+'loginPageController.module',
+'appointmentsPageController.module',
+'router.module',
+'addFoodController.module',
+'addExerciseController.module',
+'addAppointmentController.module',
+'viewFoodPageController.module',
+'viewExercisePageController.module',
+'viewCalendarController.module',
+'dashboardController.module',
+]);

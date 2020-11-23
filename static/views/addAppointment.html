@@ -1,0 +1,102 @@
+<html>
+<body>
+
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand text-white">COPD</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#/homePage">Home</a>
+        </li>
+        <li class="nav-item dropdown active">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Add
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item active" href="#/addAppointment">Appointment</a>
+            <a class="dropdown-item" href="#/addExercise">Exercise</a>
+            <a class="dropdown-item" href="#/addFood">Food</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            View
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+            <a class="dropdown-item" href="#/appointments">Appointment</a>
+            <a class="dropdown-item" href="#/viewExercise">Exercise</a>
+            <a class="dropdown-item" href="#/viewFood">Food</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#/dashboard">Health Insights</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#/viewCalendar">Calendar</a>
+        </li>
+      </ul>
+    </div>
+					<button type="submit" class="btn" ng-click="logout()">Logout</button>
+  </nav>
+	<br><br><br>
+
+  <main role="main">
+
+		<div class="container">
+      <h3>Add Appointment</h3>
+      <div class "row">
+        <form class="form-horizontal">
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="doctorsName">Doctor/Lab Name:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" ng-model="doctorsName" id="doctorsName">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="location">Location:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="location" ng-model="location">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="type">Type/Reason:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="type" ng-model="type">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="date_time">Date:</label>
+          <div class="col-sm-10">
+            <input type="datetime-local" class="form-control" id="date_time" ng-model="date_time">
+          </div>
+        </div>
+
+        <!-- TODO: create update function -->
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default" ng-click=insertAppointment()>Submit</button>
+          </div>
+        </div>
+      </form>
+      <div class="alert alert-danger" ng-show = "errormsg">
+        <strong>Something wrong with Data!</strong> Please validate and try again.
+      </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="alert alert-success" ng-show="successMessagebool">
+            <strong>{{successMessage}}</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+</body>
+</html>

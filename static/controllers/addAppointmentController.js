@@ -12,7 +12,7 @@ angular.module('addAppointmentController.module',[]).controller('addAppointmentC
 	$http({
 		method : "POST",
 			url : "/insertAppointment",
-			data : {"doctorsName" : $scope.doctorsName, "location" : $scope.location, "type" : $scope.type, "date_time" : new Date($scope.date_time).toLocaleString(); , "email" : $scope.user}
+			data : {"doctorsName" : $scope.doctorsName, "location" : $scope.location, "type" : $scope.type, "date_time" : Date($scope.date_time).toLocaleString(); , "email" : $scope.user}
 	}).then(function mySuccess(response) {
 	//console.log(response.data)
 

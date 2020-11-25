@@ -21,8 +21,8 @@ def insertExercise(data):
     return records
 
 def insertAppointment(data):
-    query = """
     print(data)
+    query = """
     INSERT INTO appointments (name_doctor, location_app, app_type, date_time, email)
     VALUES (\'"""+data['doctorsName']+"""\', \'"""+data['location']+"""\', \'"""+data['type']+"""\',\'"""+data['date_time']+"""\', \'"""+data['email']+"""\');"""
 

@@ -6,6 +6,7 @@ angular.module('addAppointmentController.module',[]).controller('addAppointmentC
   $scope.user = $cookies.get("email");
 
   $scope.insertAppointment=function(){
+	console.log($scope.date_time)
 	var dates = new Date($scope.date_time).toISOString();
 	console.log(dates)
 	$http({

@@ -68,6 +68,12 @@ angular.module('router.module',[]).config(function ($routeProvider) {
 			templateUrl: 'static/views/dashboard.html'
 		})
 
+		.when('/articles',
+		{
+			controller: 'articlesController',
+			templateUrl: 'static/views/articles.html'
+		})
+
 		// if non of the above routes
 		// are matched we are setting router
 		// to redirect to the RootController
